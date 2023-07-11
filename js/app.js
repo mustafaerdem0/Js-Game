@@ -1,9 +1,25 @@
 // Game Start
-let startbtn = document.getElementById("game-start")
-startbtn.addEventListener("click", gamestart)
+let startbtn = document.getElementById("game-start");
+startbtn.addEventListener("click", gamestart);
+let restartbtn = document.getElementById("game-restart");
+restartbtn.addEventListener("click", gamerestart);
+// GAME SHOOT MESSAGE
+umitkafa = "Ümit Özdağ Suriyeliyi Kafadan Vurdu";
+umitvucut = "Ümit Özdağ Suriyeliyi Vucutan Vurdu Rakibin Canı";
+umitıska = "Ümit Özdağ Iskaladı";
+surikafa = "Suriyeli Ümit Dedeyi Vurdu Dede Öldü";
+surivucut = "Suriyeli Ümit Dedeyi Vucuttan Vurdu";
+suriıska = "Suriyeli Iskaladı Kolsuz";
+
+function gamerestart(){
+    location.reload();
+
+}
 function gamestart() {
-    alert("Oyun Aranıyor...");
-    alert("Oyun Bulundu.");
+    // alert("Oyun Aranıyor...");
+    // alert("Oyun Bulundu.");
+    restartbtn.style.display = "block";
+    startbtn.style.display = "none";
     return game();
 }
 // Game
@@ -29,25 +45,25 @@ async function game() {
         if(character1damage == "kafa"){
             surimemetcan -= 100;
             hasar = document.createElement("p");
-            hasar.innerHTML = "Ümit Özdağ Kafadan Vurdu Suri Öldü";
+            hasar.innerHTML = umitkafa;
             hasar_log.appendChild(hasar);
         }
         else if(character1damage == "vucut"){
             surimemetcan -= 50;
             hasar = document.createElement("p");
-            hasar.innerHTML = "Ümitözdağ Vücuttan Vurdu Rakibin Canı" + surimemetcan;
+            hasar.innerHTML = umitvucut + surimemetcan;
             hasar_log.appendChild(hasar);
         }
         else if(character1damage == "ıska"){
             hasar = document.createElement("p");
-            hasar.innerHTML = "Ümit Dede Iskaladı";
+            hasar.innerHTML = umitıska;
             hasar_log.appendChild(hasar);
         }
         
         if(surimemetcan <= 0){
             await gecikme(2000);
             character1 = document.getElementById("character1").src = "img/character1.jpg";
-
+            character2dead = document.getElementById("character2").src = "img/character2dead.jpg";
         }
     }
     else{
@@ -63,21 +79,28 @@ async function game() {
         if(character2damage == "kafa"){
             hasar = document.createElement("p");
             umitozdagcan -= 100;
-            hasar.innerHTML = "Suriyeli Memet Kafadan Ümitözdağ Ölsede Sağlam";
+            hasar.innerHTML = surikafa;
             hasar_log.appendChild(hasar);
         }
         else if(character2damage == "vucut"){
             hasar = document.createElement("p");
             umitozdagcan -= 50;
-            hasar.innerHTML = "Suriyeli Memet Vucuttan Vurdu Rakibin Canı" + umitozdagcan;
+            hasar.innerHTML = surivucut + umitozdagcan;
             hasar_log.appendChild(hasar);
         }
         else if(character2damage == "ıska"){
             hasar = document.createElement("p");
-            hasar.innerHTML = "Suriyeli Memet Iskaladı";
+            hasar.innerHTML = suriıska;
             hasar_log.appendChild(hasar);
         }
-            await gecikme(3000);
+        if (umitozdagcan <= 0){
+            
+            await gecikme(2000);
+            character1dead = document.getElementById("character1").src = "img/character1dead.jpg"
+            character2 = document.getElementById("character2").src = "img/character2.jpg"
+            return
+        }
+            await gecikme(2800);
             return game();
         }
         
