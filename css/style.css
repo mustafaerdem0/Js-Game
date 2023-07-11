@@ -1,0 +1,41 @@
+.kill-log{
+    border: 1px solid black;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+}
+.button-container{
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+}
+#game-start{
+    border:none;
+    width: 90px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+}
+.game-container{
+    justify-content: space-evenly;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+.game-container img{
+    position: relative;
+    justify-content: space-evenly;
+    left: 0rem;
+    right: 5rem;
+    width: 500px;
+
+}
+#character2{
+    margin-bottom: 3rem;
+}
